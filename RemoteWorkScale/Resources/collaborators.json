@@ -1,0 +1,224 @@
+[
+    {
+        "nome": "Iago",
+        "escalas": [
+            {
+                "id": 1,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "presencial"
+            },
+            {
+                "id": 2,
+                "segunda": "presencial",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            },
+            {
+                "id": 3,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "presencial"
+            },
+            {
+                "id": 2,
+                "segunda": "presencial",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            }
+        ]
+    },
+    {
+        "nome": "João",
+        "escalas": [
+            {
+                "id": 1,
+                "segunda": "casa",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "casa"
+            },
+            {
+                "id": 2,
+                "segunda": "casa",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "casa"
+            },
+            {
+                "id": 3,
+                "segunda": "casa",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "casa"
+            },
+            {
+                "id": 4,
+                "segunda": "casa",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "casa"
+            }
+        ]
+    },
+    {
+        "nome": "Muniz",
+        "escalas": [
+            {
+                "id": 1,
+                "segunda": "presencial",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            },
+            {
+                "id": 2,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "presencial"
+            },
+            {
+                "id": 3,
+                "segunda": "presencial",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            },
+            {
+                "id": 4,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "presencial"
+            }
+        ]
+    },
+    {
+        "nome": "Neiva",
+        "escalas": [
+            {
+                "id": 1,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "presencial"
+            },
+            {
+                "id": 2,
+                "segunda": "presencial",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            },
+            {
+                "id": 3,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "presencial"
+            },
+            {
+                "id": 2,
+                "segunda": "presencial",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            }
+        ]
+    },
+    {
+        "nome": "Thiago",
+        "escalas": [
+            {
+                "id": 1,
+                "segunda": "presencial",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            },
+            {
+                "id": 2,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "presencial"
+            },
+            {
+                "id": 3,
+                "segunda": "presencial",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            },
+            {
+                "id": 4,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "presencial"
+            }
+        ]
+    },
+    {
+        "nome": "Vini",
+        "escalas": [
+            {
+                "id": 1,
+                "segunda": "casa",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            },
+            {
+                "id": 2,
+                "segunda": "casa",
+                "terça": "casa",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            },
+            {
+                "id": 3,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "casa",
+                "sexta": "casa"
+            },
+            {
+                "id": 3,
+                "segunda": "casa",
+                "terça": "presencial",
+                "quarta": "presencial",
+                "quinta": "presencial",
+                "sexta": "casa"
+            }
+        ]
+    }
+]
