@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0E142B2B44DD8200A1A5B9 /* AnnualScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E142A2B44DD8200A1A5B9 /* AnnualScaleView.swift */; };
+		BE0E142D2B44DE8900A1A5B9 /* AnnualScaleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E142C2B44DE8900A1A5B9 /* AnnualScaleUseCase.swift */; };
+		BE0E142F2B44EF3600A1A5B9 /* AnnualScaleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E142E2B44EF3600A1A5B9 /* AnnualScaleViewModel.swift */; };
+		BE0E14322B45ABFF00A1A5B9 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E14312B45ABFF00A1A5B9 /* Date+Extensions.swift */; };
+		BE0E14342B45AC3600A1A5B9 /* ScaleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E14332B45AC3600A1A5B9 /* ScaleDate.swift */; };
+		BE0E14362B45AC7800A1A5B9 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E14352B45AC7800A1A5B9 /* UseCaseError.swift */; };
 		BE3E898C2B2BD9510044B7EC /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3E898B2B2BD9510044B7EC /* TableView.swift */; };
 		BE9C66D32B13A51D00DD9B78 /* RemoteWorkScaleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C66D22B13A51D00DD9B78 /* RemoteWorkScaleApp.swift */; };
 		BE9C66D52B13A51D00DD9B78 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C66D42B13A51D00DD9B78 /* ContentView.swift */; };
@@ -47,6 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE0E142A2B44DD8200A1A5B9 /* AnnualScaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualScaleView.swift; sourceTree = "<group>"; };
+		BE0E142C2B44DE8900A1A5B9 /* AnnualScaleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualScaleUseCase.swift; sourceTree = "<group>"; };
+		BE0E142E2B44EF3600A1A5B9 /* AnnualScaleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualScaleViewModel.swift; sourceTree = "<group>"; };
+		BE0E14312B45ABFF00A1A5B9 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		BE0E14332B45AC3600A1A5B9 /* ScaleDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleDate.swift; sourceTree = "<group>"; };
+		BE0E14352B45AC7800A1A5B9 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
 		BE3E898B2B2BD9510044B7EC /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		BE9C66CF2B13A51D00DD9B78 /* RemoteWorkScale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteWorkScale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9C66D22B13A51D00DD9B78 /* RemoteWorkScaleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWorkScaleApp.swift; sourceTree = "<group>"; };
@@ -100,6 +112,7 @@
 		BE0E14262B44B0A500A1A5B9 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				BE0E14302B45ABEB00A1A5B9 /* Extensions */,
 				BEDCCA4E2B2005BA00592AEF /* Models */,
 				BEDCCA562B20090800592AEF /* Views */,
 			);
@@ -118,9 +131,27 @@
 		BE0E14282B44B0DB00A1A5B9 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				BE0E14292B44B16200A1A5B9 /* AnnualScale */,
 				BE0E14272B44B0AD00A1A5B9 /* TodayScale */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		BE0E14292B44B16200A1A5B9 /* AnnualScale */ = {
+			isa = PBXGroup;
+			children = (
+				BE0E142A2B44DD8200A1A5B9 /* AnnualScaleView.swift */,
+				BE0E142E2B44EF3600A1A5B9 /* AnnualScaleViewModel.swift */,
+			);
+			path = AnnualScale;
+			sourceTree = "<group>";
+		};
+		BE0E14302B45ABEB00A1A5B9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BE0E14312B45ABFF00A1A5B9 /* Date+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BE9C66C62B13A51D00DD9B78 = {
@@ -200,6 +231,8 @@
 				BEDCCA512B20060500592AEF /* Scale.swift */,
 				BEDCCA532B2006D000592AEF /* Collaborator.swift */,
 				BEDCCA632B23A80500592AEF /* RowInformation.swift */,
+				BE0E14332B45AC3600A1A5B9 /* ScaleDate.swift */,
+				BE0E14352B45AC7800A1A5B9 /* UseCaseError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +259,7 @@
 		BEDCCA5E2B234F9200592AEF /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				BE0E142C2B44DE8900A1A5B9 /* AnnualScaleUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -364,15 +398,21 @@
 				BEDCCA662B23A98E00592AEF /* HeaderRow.swift in Sources */,
 				BEBACC182B2B1F4C00672109 /* ServiceLocal.swift in Sources */,
 				BE9C66D52B13A51D00DD9B78 /* ContentView.swift in Sources */,
+				BE0E142D2B44DE8900A1A5B9 /* AnnualScaleUseCase.swift in Sources */,
+				BE0E14362B45AC7800A1A5B9 /* UseCaseError.swift in Sources */,
 				BEDCCA5D2B234E5C00592AEF /* TodayScaleViewModel.swift in Sources */,
+				BE0E142B2B44DD8200A1A5B9 /* AnnualScaleView.swift in Sources */,
 				BEDCCA502B2005D800592AEF /* WorkplaceType.swift in Sources */,
 				BE3E898C2B2BD9510044B7EC /* TableView.swift in Sources */,
 				BEDCCA522B20060500592AEF /* Scale.swift in Sources */,
 				BEDCCA642B23A80500592AEF /* RowInformation.swift in Sources */,
 				BEBACC162B2B1F0B00672109 /* ServiceProtocol.swift in Sources */,
+				BE0E14322B45ABFF00A1A5B9 /* Date+Extensions.swift in Sources */,
 				BEDCCA582B20096900592AEF /* TodayScaleView.swift in Sources */,
 				BE9C66D32B13A51D00DD9B78 /* RemoteWorkScaleApp.swift in Sources */,
 				BEDCCA542B2006D000592AEF /* Collaborator.swift in Sources */,
+				BE0E14342B45AC3600A1A5B9 /* ScaleDate.swift in Sources */,
+				BE0E142F2B44EF3600A1A5B9 /* AnnualScaleViewModel.swift in Sources */,
 				BEDCCA682B23AA1100592AEF /* ContentRow.swift in Sources */,
 				BEDCCA5A2B200F2A00592AEF /* Weekdays.swift in Sources */,
 			);
