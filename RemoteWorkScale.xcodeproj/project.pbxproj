@@ -97,6 +97,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE0E14262B44B0A500A1A5B9 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				BEDCCA4E2B2005BA00592AEF /* Models */,
+				BEDCCA562B20090800592AEF /* Views */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		BE0E14272B44B0AD00A1A5B9 /* TodayScale */ = {
+			isa = PBXGroup;
+			children = (
+				BEDCCA572B20096900592AEF /* TodayScaleView.swift */,
+				BEDCCA5C2B234E5C00592AEF /* TodayScaleViewModel.swift */,
+			);
+			path = TodayScale;
+			sourceTree = "<group>";
+		};
+		BE0E14282B44B0DB00A1A5B9 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				BE0E14272B44B0AD00A1A5B9 /* TodayScale */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 		BE9C66C62B13A51D00DD9B78 = {
 			isa = PBXGroup;
 			children = (
@@ -120,12 +146,11 @@
 		BE9C66D12B13A51D00DD9B78 /* RemoteWorkScale */ = {
 			isa = PBXGroup;
 			children = (
+				BE0E14282B44B0DB00A1A5B9 /* Features */,
+				BE0E14262B44B0A500A1A5B9 /* Commons */,
 				BEBACC142B2B1ED700672109 /* Service */,
 				BEDCCA5E2B234F9200592AEF /* UseCases */,
-				BEDCCA5B2B234E4800592AEF /* ViewModels */,
-				BEDCCA562B20090800592AEF /* Views */,
 				BEDCCA552B20083B00592AEF /* Resources */,
-				BEDCCA4E2B2005BA00592AEF /* Models */,
 				BE9C66D22B13A51D00DD9B78 /* RemoteWorkScaleApp.swift */,
 				BE9C66D42B13A51D00DD9B78 /* ContentView.swift */,
 				BE9C66D62B13A51F00DD9B78 /* Assets.xcassets */,
@@ -191,20 +216,11 @@
 		BEDCCA562B20090800592AEF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BEDCCA572B20096900592AEF /* TodayScaleView.swift */,
 				BEDCCA652B23A98E00592AEF /* HeaderRow.swift */,
 				BE3E898B2B2BD9510044B7EC /* TableView.swift */,
 				BEDCCA672B23AA1100592AEF /* ContentRow.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		BEDCCA5B2B234E4800592AEF /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				BEDCCA5C2B234E5C00592AEF /* TodayScaleViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		BEDCCA5E2B234F9200592AEF /* UseCases */ = {
