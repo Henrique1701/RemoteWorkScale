@@ -6,11 +6,19 @@
 //
 
 struct Collaborator: Codable {
-    let name: String
+    var name: String
     var scales: [Scale]
     
+    private static let defaultScales: [Scale] = [
+        .init(id: 1),
+        .init(id: 2),
+        .init(id: 3),
+        .init(id: 4),
+        .init(id: 5)
+    ]
+    
     init(name: String = "",
-         scales: [Scale] = []) {
+         scales: [Scale] = defaultScales) {
         self.name = name
         self.scales = scales
     }

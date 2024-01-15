@@ -19,6 +19,13 @@ struct ContentView: View {
                 .tabItem {
                     Label("Anual", systemImage: "calendar")
                 }
+            
+            NavigationStack {
+                ConfigurationsView()
+            }
+            .tabItem {
+                Label("Configurações", systemImage: "gearshape")
+            }
         }
     }
 }
