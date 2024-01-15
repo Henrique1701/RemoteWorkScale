@@ -16,34 +16,39 @@ protocol TodayScaleViewModelProtocol: ObservableObject {
     func getScaleToday(to collaborator: Collaborator) -> Scale
     func getScaleTableData(from collaborator: Collaborator) -> [RowInformation]
     func getTableModel() -> [TableModel]
+    
+    func updateCollaborator()
 }
 
 class TodayScaleViewModel: TodayScaleViewModelProtocol {
-    @Published var collaborator: Collaborator
-    @Published var collaborators: [Collaborator]
-    @Published var filterIsOn: Bool = true
+    @Published var collaborator = Collaborator()
+    @Published var collaborators = [Collaborator]()
+    @Published var filterIsOn = false
     
-    let service: ServiceProtocol
+    private let getScaleTodayIdUseCase: GetScaleTodayIdUseCaseProtocol
+    private let getAllCollaboratorsUseCase: GetAllCollaboratorsUseCaseProtocol
     
-    init() {
-        service = ServiceLocal()
+    init(getScaleTodayIdUseCase: GetScaleTodayIdUseCaseProtocol,
+         getAllCollaboratorsUseCase: GetAllCollaboratorsUseCaseProtocol) {
+        self.getScaleTodayIdUseCase = getScaleTodayIdUseCase
+        self.getAllCollaboratorsUseCase = getAllCollaboratorsUseCase
         
-        let collaborators = service.getCollaborators()
-        
-        self.collaborators = collaborators
-        self.collaborator = collaborators.first ?? Collaborator()
+        updateCollaborator()
+    }
+    
+    func updateCollaborator() {
+        collaborators = getAllCollaboratorsUseCase.execute()
+        collaborator = collaborators.first ?? .init()
     }
     
     func getScaleTodayId() -> Int {
-        // TODO: Pegar o id da escala de hoje
-        return 1
+        return getScaleTodayIdUseCase.execute()
     }
     
     func getScaleToday(to collaborator: Collaborator) -> Scale {
         let scaleTodayId = getScaleTodayId()
         
         for scale in collaborator.scales where scale.id == scaleTodayId {
-            print("Escala: \(String(describing: scale.scalesWithDayDescription.first?.workplace))")
             return scale
         }
         
@@ -53,8 +58,6 @@ class TodayScaleViewModel: TodayScaleViewModelProtocol {
     func getScaleTableData(from collaborator: Collaborator) -> [RowInformation] {
         let scaleToday = getScaleToday(to: collaborator)
         var data = [RowInformation]()
-        
-        print("entrou: \(collaborator.name)")
         
         for day in Weekday.getWeekdays() {
             let workplace = getWorkplace(scaleToday, to: day)

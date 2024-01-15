@@ -10,7 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            TodayScaleView(viewModel: TodayScaleViewModel())
+            TodayScaleView(viewModel: TodayScaleViewModel(
+                getScaleTodayIdUseCase: GetScaleTodayIdUseCase(annualScaleUseCase: AnnualScaleUseCase()),
+                getAllCollaboratorsUseCase: GetAllCollaboratorsUseCase(service: ServiceLocal())))
                 .tabItem {
                     Label("Hoje", systemImage: "calendar.day.timeline.left")
                 }

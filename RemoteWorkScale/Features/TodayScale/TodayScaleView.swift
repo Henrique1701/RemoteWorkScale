@@ -13,14 +13,17 @@ struct TodayScaleView<ViewModel: TodayScaleViewModelProtocol>: View {
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
-//        setSegmentedControlAppearance()
     }
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("Escala de hoje")
-                    .font(.title)
+                VStack(alignment: .leading) {
+                    Text("Escala de hoje")
+                        .font(.title)
+                    Text("A escala de hoje é: \(viewModel.getScaleTodayId())")
+                        .font(.subheadline)
+                }
                 Spacer()
                 Toggle("Filtrar", isOn: $viewModel.filterIsOn)
                     .toggleStyle(.button)
@@ -28,26 +31,29 @@ struct TodayScaleView<ViewModel: TodayScaleViewModelProtocol>: View {
             .padding()
             
             if viewModel.filterIsOn {
-                Picker("Selecionar Visualização", selection: $viewModel.collaborator) {
-                    ForEach(viewModel.collaborators, id:\.self) {
-                        Text("\($0.name)")
+                HStack {
+                    Text("Selecionar colaborador")
+                    Picker("Selecionar Visualização", selection: $viewModel.collaborator) {
+                        ForEach(viewModel.collaborators, id:\.self) {
+                            Text("\($0.name)")
+                        }
                     }
+                    .pickerStyle(.menu)
                 }
-                .pickerStyle(.segmented)
-                .padding([.horizontal, .bottom])
-            } 
+                .padding(.horizontal)
+            }
             
             TableView(models: .constant(viewModel.getTableModel()))
         }
-    }
-    
-    private func setSegmentedControlAppearance() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = .systemBlue.withAlphaComponent(0.15)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemBlue],
-                                                               for: .selected)
+        .onAppear {
+            viewModel.updateCollaborator()
+        }
     }
 }
 
 #Preview {
-    TodayScaleView(viewModel: TodayScaleViewModel())
+    TodayScaleView(viewModel: TodayScaleViewModel(
+        getScaleTodayIdUseCase: GetScaleTodayIdUseCase(annualScaleUseCase: AnnualScaleUseCase()),
+        getAllCollaboratorsUseCase: GetAllCollaboratorsUseCase(service: ServiceLocal())
+    ))
 }

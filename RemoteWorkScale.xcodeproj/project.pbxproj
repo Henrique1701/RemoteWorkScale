@@ -23,6 +23,8 @@
 		BE12181D2B54E4D50022EAEE /* EditCollaboratorNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12181C2B54E4D50022EAEE /* EditCollaboratorNameUseCase.swift */; };
 		BE12181F2B54E4FB0022EAEE /* EditCollaboratorNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12181E2B54E4FB0022EAEE /* EditCollaboratorNameViewModel.swift */; };
 		BE1218222B55609E0022EAEE /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1218212B55609E0022EAEE /* ServiceError.swift */; };
+		BE1218252B5561ED0022EAEE /* GetScaleTodayIdUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1218242B5561ED0022EAEE /* GetScaleTodayIdUseCaseProtocol.swift */; };
+		BE1218282B5562250022EAEE /* GetScaleTodayIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1218272B5562250022EAEE /* GetScaleTodayIdUseCase.swift */; };
 		BE3E898C2B2BD9510044B7EC /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3E898B2B2BD9510044B7EC /* TableView.swift */; };
 		BE8E5C692B5431B600A05017 /* EditCollaboratorUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8E5C682B5431B600A05017 /* EditCollaboratorUseCaseProtocol.swift */; };
 		BE8E5C6B2B5431DD00A05017 /* EditCollaboratorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8E5C6A2B5431DD00A05017 /* EditCollaboratorUseCase.swift */; };
@@ -91,6 +93,8 @@
 		BE12181E2B54E4FB0022EAEE /* EditCollaboratorNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollaboratorNameViewModel.swift; sourceTree = "<group>"; };
 		BE1218202B555D740022EAEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BE1218212B55609E0022EAEE /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		BE1218242B5561ED0022EAEE /* GetScaleTodayIdUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScaleTodayIdUseCaseProtocol.swift; sourceTree = "<group>"; };
+		BE1218272B5562250022EAEE /* GetScaleTodayIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScaleTodayIdUseCase.swift; sourceTree = "<group>"; };
 		BE3E898B2B2BD9510044B7EC /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		BE8E5C682B5431B600A05017 /* EditCollaboratorUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollaboratorUseCaseProtocol.swift; sourceTree = "<group>"; };
 		BE8E5C6A2B5431DD00A05017 /* EditCollaboratorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollaboratorUseCase.swift; sourceTree = "<group>"; };
@@ -226,6 +230,15 @@
 				BE12181C2B54E4D50022EAEE /* EditCollaboratorNameUseCase.swift */,
 			);
 			path = EditCollaboratorName;
+			sourceTree = "<group>";
+		};
+		BE1218232B5561670022EAEE /* GetScaleTodayId */ = {
+			isa = PBXGroup;
+			children = (
+				BE1218242B5561ED0022EAEE /* GetScaleTodayIdUseCaseProtocol.swift */,
+				BE1218272B5562250022EAEE /* GetScaleTodayIdUseCase.swift */,
+			);
+			path = GetScaleTodayId;
 			sourceTree = "<group>";
 		};
 		BE8E5C672B54318B00A05017 /* EditCollaborator */ = {
@@ -399,6 +412,7 @@
 		BEDCCA5E2B234F9200592AEF /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				BE1218232B5561670022EAEE /* GetScaleTodayId */,
 				BE1218192B54E4B10022EAEE /* EditCollaboratorName */,
 				BE8E5C7E2B54339800A05017 /* GetAllCollaborator */,
 				BE8E5C792B54334F00A05017 /* RemoveCollaborator */,
@@ -556,6 +570,7 @@
 				BE8E5C712B5432CF00A05017 /* RegisterCollaboratorViewModel.swift in Sources */,
 				BE0E142B2B44DD8200A1A5B9 /* AnnualScaleView.swift in Sources */,
 				BE1218182B54C9C90022EAEE /* EditCollaboratorNameView.swift in Sources */,
+				BE1218252B5561ED0022EAEE /* GetScaleTodayIdUseCaseProtocol.swift in Sources */,
 				BEDCCA502B2005D800592AEF /* WorkplaceType.swift in Sources */,
 				BE12181D2B54E4D50022EAEE /* EditCollaboratorNameUseCase.swift in Sources */,
 				BE8E5C6B2B5431DD00A05017 /* EditCollaboratorUseCase.swift in Sources */,
@@ -567,6 +582,7 @@
 				BEDCCA642B23A80500592AEF /* RowInformation.swift in Sources */,
 				BEBACC162B2B1F0B00672109 /* ServiceProtocol.swift in Sources */,
 				BE0E14322B45ABFF00A1A5B9 /* Date+Extensions.swift in Sources */,
+				BE1218282B5562250022EAEE /* GetScaleTodayIdUseCase.swift in Sources */,
 				BE8E5C852B5433F500A05017 /* RemoveCollaboratorViewModel.swift in Sources */,
 				BEDCCA582B20096900592AEF /* TodayScaleView.swift in Sources */,
 				BE9C66D32B13A51D00DD9B78 /* RemoteWorkScaleApp.swift in Sources */,
