@@ -11,6 +11,7 @@ protocol TodayScaleViewModelProtocol: ObservableObject {
     var collaborator: Collaborator { get set }
     var collaborators: [Collaborator] { get set }
     var filterIsOn: Bool { get set }
+    var tableModels: [TableModel] { get set }
     
     func getScaleTodayId() -> Int
     func getScaleToday(to collaborator: Collaborator) -> Scale
@@ -24,6 +25,7 @@ class TodayScaleViewModel: TodayScaleViewModelProtocol {
     @Published var collaborator = Collaborator()
     @Published var collaborators = [Collaborator]()
     @Published var filterIsOn = false
+    @Published var tableModels = [TableModel]()
     
     private let getScaleTodayIdUseCase: GetScaleTodayIdUseCaseProtocol
     private let getAllCollaboratorsUseCase: GetAllCollaboratorsUseCaseProtocol
@@ -39,6 +41,8 @@ class TodayScaleViewModel: TodayScaleViewModelProtocol {
     func updateCollaborator() {
         collaborators = getAllCollaboratorsUseCase.execute()
         collaborator = collaborators.first ?? .init()
+        
+        tableModels = getTableModel()
     }
     
     func getScaleTodayId() -> Int {

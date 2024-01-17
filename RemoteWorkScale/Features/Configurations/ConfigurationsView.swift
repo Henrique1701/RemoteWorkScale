@@ -18,12 +18,7 @@ struct ConfigurationsView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Configurações")
-                    .font(.title)
-                Spacer()
-            }
-            .padding()
+            HeaderView(title: "Configurações")
             List {
                 NavigationLink("Cadastrar colaborador", value: ConfigurationViewSelection.register)
                 NavigationLink("Remover colaborador", value: ConfigurationViewSelection.remove)

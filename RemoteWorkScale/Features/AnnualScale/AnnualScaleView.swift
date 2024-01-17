@@ -14,14 +14,25 @@ struct AnnualScaleView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Escala anual")
-                    .font(.title)
-                Spacer()
-                // TODO: Adicionar filtro por ano
+            HeaderView(title: "Escala anual")
+            List {
+                HStack {
+                    Text(viewModel.getTableModels().first?.leftDescription ?? "")
+                        .font(.headline)
+                    Spacer()
+                    Text(viewModel.getTableModels().first?.rightDescription ?? "")
+                        .font(.headline)
+                        .padding(.trailing)
+                }
+                ForEach(viewModel.getTableModels().first?.rows ?? [], id: \.self) { row in
+                    HStack {
+                        Text(row.left)
+                        Spacer()
+                        Text(row.right)
+                            .padding(.trailing)
+                    }
+                }
             }
-            .padding()
-            TableView(models: .constant(viewModel.getTableModels()))
         }
     }
 }

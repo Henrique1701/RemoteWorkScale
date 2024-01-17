@@ -17,18 +17,9 @@ struct TodayScaleView<ViewModel: TodayScaleViewModelProtocol>: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Escala de hoje")
-                        .font(.title)
-                    Text("A escala de hoje é: \(viewModel.getScaleTodayId())")
-                        .font(.subheadline)
-                }
-                Spacer()
-                Toggle("Filtrar", isOn: $viewModel.filterIsOn)
-                    .toggleStyle(.button)
-            }
-            .padding()
+            HeaderView(title: "Escala de hoje",
+                       subtitle: "A escala de hoje é: \(viewModel.getScaleTodayId())",
+                       filterIsOn: $viewModel.filterIsOn)
             
             if viewModel.filterIsOn {
                 HStack {
@@ -43,7 +34,7 @@ struct TodayScaleView<ViewModel: TodayScaleViewModelProtocol>: View {
                 .padding(.horizontal)
             }
             
-            TableView(models: .constant(viewModel.getTableModel()))
+            TableView(models: $viewModel.tableModels)
         }
         .onAppear {
             viewModel.updateCollaborator()
