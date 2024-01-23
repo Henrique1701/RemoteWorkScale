@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var collaboratorsModel: CollaboratorsModel
+    
     var body: some View {
         TabView {
-            TodayScaleView(viewModel: TodayScaleViewModel(
-                getScaleTodayIdUseCase: GetScaleTodayIdUseCase(annualScaleUseCase: AnnualScaleUseCase()),
-                getAllCollaboratorsUseCase: GetAllCollaboratorsUseCase(service: ServiceLocal())))
-                .tabItem {
-                    Label("Hoje", systemImage: "calendar.day.timeline.left")
-                }
+            TodayScaleView(
+                TodayScaleViewModel(collaboratorsModel: collaboratorsModel,
+                                    getScaleTodayIdUseCase: GetScaleTodayIdUseCase(annualScaleUseCase: AnnualScaleUseCase()))
+            )
+            .tabItem {
+                Label("Hoje", systemImage: "calendar.day.timeline.left")
+            }
             
             AnnualScaleView()
                 .tabItem {

@@ -11,6 +11,8 @@ class EditScaleViewModel: ObservableObject {
     
     // MARK: - PUBLIC PROPERTIES
     
+    @Published var collaboratorsModel: CollaboratorsModel
+    
     @Published var selectedCollaborator: Collaborator = .init()
     @Published var selectedScaleId = 1
     @Published var showAlert = false
@@ -23,25 +25,19 @@ class EditScaleViewModel: ObservableObject {
     
     // MARK: - PRIVATE PROPERTIES
     
-    private let editCollaboratorUseCase: EditCollaboratorUseCaseProtocol
-    private let getAllCollaboratorUseCase: GetAllCollaboratorsUseCaseProtocol
-    private var collaborators = [Collaborator]()
     private var alertMessage = ""
     
     // MARK: - INITIALIZATER
     
-    init(editCollaboratorUseCase: EditCollaboratorUseCaseProtocol,
-         getAllCollaboratorUseCase: GetAllCollaboratorsUseCaseProtocol) {
-        self.editCollaboratorUseCase = editCollaboratorUseCase
-        self.getAllCollaboratorUseCase = getAllCollaboratorUseCase
-        setupProperties()
+    init(collaboratorsModel: CollaboratorsModel) {
+        self.collaboratorsModel = collaboratorsModel
+        setProperties()
     }
     
     // MARK: - PRIVATE METHODS
     
-    private func setupProperties() {
-        collaborators = getAllCollaboratorUseCase.execute()
-        selectedCollaborator = collaborators.first ?? .init()
+    private func setProperties() {
+        selectedCollaborator = collaboratorsModel.collaborators.first ?? .init()
     }
     
     private func getCurrentSelectedScale() -> Scale? {
@@ -75,17 +71,17 @@ class EditScaleViewModel: ObservableObject {
     // MARK: - PUBLIC METHODS
     
     func getCollaboratorsName() -> [String] {
-        return getAllCollaboratorUseCase.execute().map { $0.name }
+        return collaboratorsModel.collaborators.map { $0.name }
     }
     
     func getCollaborators() -> [Collaborator] {
-        return getAllCollaboratorUseCase.execute()
+        return collaboratorsModel.collaborators
     }
     
     func editCollaborator() {
         let editedCollaborator = getEditedCollaborator()
         do {
-            try editCollaboratorUseCase.execute(with: editedCollaborator)
+            try collaboratorsModel.edit(collaborator: editedCollaborator)
             alertMessage = "Sucesso ao editar as escalas!"
         } catch {
             alertMessage = "Erro ao editar as escalas"

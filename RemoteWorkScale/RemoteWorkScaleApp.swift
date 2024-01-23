@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct RemoteWorkScaleApp: App {
+    @StateObject var collaboratorsModel = CollaboratorsModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(collaboratorsModel)
         }
     }
 }

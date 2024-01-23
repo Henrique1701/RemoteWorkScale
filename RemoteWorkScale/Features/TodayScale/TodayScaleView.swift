@@ -8,24 +8,27 @@
 import Combine
 import SwiftUI
 
-struct TodayScaleView<ViewModel: TodayScaleViewModelProtocol>: View {
-    @ObservedObject var viewModel: ViewModel
+struct TodayScaleView: View {
+    @ObservedObject var viewModel: TodayScaleViewModel
     
-    init(viewModel: ViewModel) {
+    init(_ viewModel: TodayScaleViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
         VStack(alignment: .leading) {
             HeaderView(title: "Escala de hoje",
-                       subtitle: "A escala de hoje é: \(viewModel.getScaleTodayId())",
+                       subtitle: "A escala de hoje é a: \(viewModel.getScaleTodayId())",
                        filterIsOn: $viewModel.filterIsOn)
             
             if viewModel.filterIsOn {
                 HStack {
                     Text("Selecionar colaborador")
                     Picker("Selecionar Visualização", selection: $viewModel.collaborator) {
-                        ForEach(viewModel.collaborators, id:\.self) {
+                        List {
+                            
+                        }
+                        ForEach(viewModel.collaboratorsModel.collaborators, id:\.self) {
                             Text("\($0.name)")
                         }
                     }
@@ -37,14 +40,18 @@ struct TodayScaleView<ViewModel: TodayScaleViewModelProtocol>: View {
             TableView(models: $viewModel.tableModels)
         }
         .onAppear {
-            viewModel.updateCollaborator()
+            viewModel.viewAppear()
+        }
+        .onChange(of: viewModel.filterIsOn) {
+            viewModel.filterIsOnWasUpdated()
         }
     }
 }
 
 #Preview {
-    TodayScaleView(viewModel: TodayScaleViewModel(
-        getScaleTodayIdUseCase: GetScaleTodayIdUseCase(annualScaleUseCase: AnnualScaleUseCase()),
-        getAllCollaboratorsUseCase: GetAllCollaboratorsUseCase(service: ServiceLocal())
+    TodayScaleView(
+        TodayScaleViewModel(
+        collaboratorsModel: CollaboratorsModel(),
+        getScaleTodayIdUseCase: GetScaleTodayIdUseCase(annualScaleUseCase: AnnualScaleUseCase())
     ))
 }

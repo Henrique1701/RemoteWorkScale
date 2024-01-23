@@ -16,6 +16,8 @@ enum ConfigurationViewSelection {
 
 struct ConfigurationsView: View {
     
+    @EnvironmentObject var collaboratorsModel: CollaboratorsModel
+    
     var body: some View {
         VStack {
             HeaderView(title: "Configurações")
@@ -27,10 +29,10 @@ struct ConfigurationsView: View {
             }
             .navigationDestination(for: ConfigurationViewSelection.self) { selection in
                 switch selection {
-                case .register: RegisterCollaboratorView()
-                case .edit: EditScaleView()
-                case .remove: RemoveCollaboratorView()
-                case .editCollaboratorName: EditCollaboratorNameView()
+                case .register: RegisterCollaboratorView(viewModel: RegisterCollaboratorViewModel(collaboratorsModel: collaboratorsModel))
+                case .edit: EditScaleView(viewModel: EditScaleViewModel(collaboratorsModel: collaboratorsModel))
+                case .remove: RemoveCollaboratorView(viewModel: RemoveCollaboratorViewModel(collaboratorsModel: collaboratorsModel))
+                case .editCollaboratorName: EditCollaboratorNameView(viewModel: EditCollaboratorNameViewModel(collaboratorsModel: collaboratorsModel))
                 }
             }
         }

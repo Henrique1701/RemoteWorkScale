@@ -1,18 +1,18 @@
 //
-//  ServiceLocal.swift
+//  CollaboratorsModel.swift
 //  RemoteWorkScale
 //
-//  Created by José Henrique Fernandes Silva on 14/12/23.
+//  Created by José Henrique Fernandes Silva on 22/01/24.
 //
 
+import Combine
 import Foundation
 
-class ServiceLocal: ObservableObject, ServiceProtocol {
+class CollaboratorsModel: ObservableObject {
     
     // MARK: - PUBLIC PROPERTIES
     
-//    private(set) public var shared: ServiceProtocol = ServiceLocal()
-    @Published private(set) public var collaborators = [Collaborator]()
+    @Published var collaborators = [Collaborator]()
     
     // MARK: - PRIVATE PROPERTIES
     
@@ -48,7 +48,7 @@ class ServiceLocal: ObservableObject, ServiceProtocol {
         }
     }
     
-    func read(filename: String) throws -> [Collaborator] {
+    private func read(filename: String) throws -> [Collaborator] {
         do {
             let file = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                 .appendingPathComponent(filename)
@@ -95,6 +95,7 @@ class ServiceLocal: ObservableObject, ServiceProtocol {
         
         do {
             try write(collaborators)
+            self.collaborators = getCollaborators()
         } catch {
             throw ServiceError.message("Error ao adicionar o colaborador \(collaborator.name)")
         }
@@ -107,6 +108,7 @@ class ServiceLocal: ObservableObject, ServiceProtocol {
         collaborators[index] = collaborator
         
         try write(collaborators)
+        self.collaborators = getCollaborators()
     }
     
     func removeCollaborator(with name: String) throws {
@@ -114,6 +116,7 @@ class ServiceLocal: ObservableObject, ServiceProtocol {
         collaborators.removeAll(where: { $0.name == name })
         
         try write(collaborators)
+        self.collaborators = getCollaborators()
     }
     
     func editCollaboratorName(from name: String, to newName: String) throws {
@@ -135,5 +138,6 @@ class ServiceLocal: ObservableObject, ServiceProtocol {
         
         collaborators[index].name = newName
         try write(collaborators)
+        self.collaborators = getCollaborators()
     }
 }

@@ -9,22 +9,24 @@ import Combine
 import Foundation
 
 class RegisterCollaboratorViewModel: ObservableObject {
+    @Published var collaboratorsModel: CollaboratorsModel
+    @Published var selectedCollaboratorName = ""
     @Published var showAlert = false
     var alertMessage = ""
     
-    private let registerCollaboratorUseCase: RegisterCollaboratorUseCaseProtocol
-    
-    init(registerCollaboratorUseCase: RegisterCollaboratorUseCaseProtocol) {
-        self.registerCollaboratorUseCase = registerCollaboratorUseCase
+    init(collaboratorsModel: CollaboratorsModel) {
+        self.collaboratorsModel = collaboratorsModel
     }
     
-    func registerNewCollaborator(with name: String) {
-        let newName = name.isEmpty ? UUID().uuidString : name
+    func registerNewCollaborator() {
+        let newName = selectedCollaboratorName.isEmpty ? UUID().uuidString : selectedCollaboratorName
         let newCollaborator = Collaborator(name: newName)
         
+        selectedCollaboratorName = ""
+        alertMessage = ""
         
         do {
-            try registerCollaboratorUseCase.execute(newCollaborator)
+            try collaboratorsModel.add(collaborator: newCollaborator)
             alertMessage = "\(newName) foi registrado com sucesso!"
         } catch {
             if let error = error as? ServiceError,

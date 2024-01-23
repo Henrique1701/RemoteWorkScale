@@ -6,6 +6,8 @@
 //
 
 protocol ServiceProtocol {
+//    var shared: ServiceProtocol { get }
+    
     func getCollaborators() -> [Collaborator]
     func add(collaborator: Collaborator) throws
     func edit(collaborator: Collaborator) throws

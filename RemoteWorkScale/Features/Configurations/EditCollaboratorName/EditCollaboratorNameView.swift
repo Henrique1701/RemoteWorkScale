@@ -9,10 +9,11 @@ import SwiftUI
 
 struct EditCollaboratorNameView: View {
     
-    @StateObject var viewModel = EditCollaboratorNameViewModel(
-        editCollaboratorNameUseCase: EditCollaboratorNameUseCase(service: ServiceLocal()),
-        getAllCollaboratorsUseCase: GetAllCollaboratorsUseCase(service: ServiceLocal())
-    )
+    @ObservedObject var viewModel: EditCollaboratorNameViewModel
+    
+    init(viewModel: EditCollaboratorNameViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
@@ -41,5 +42,5 @@ struct EditCollaboratorNameView: View {
 }
 
 #Preview {
-    EditCollaboratorNameView()
+    EditCollaboratorNameView(viewModel: EditCollaboratorNameViewModel(collaboratorsModel: CollaboratorsModel()))
 }

@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 protocol TodayScaleViewModelProtocol: ObservableObject {
     var collaborator: Collaborator { get set }
@@ -21,29 +22,51 @@ protocol TodayScaleViewModelProtocol: ObservableObject {
     func updateCollaborator()
 }
 
-class TodayScaleViewModel: TodayScaleViewModelProtocol {
+class TodayScaleViewModel: ObservableObject {
+    
+    // MARK: - PUBLIC PROPERTIES
+    
+    @Published var collaboratorsModel: CollaboratorsModel
     @Published var collaborator = Collaborator()
-    @Published var collaborators = [Collaborator]()
-    @Published var filterIsOn = false
+    @Published var filterIsOn = UserDefaults.standard.bool(forKey: "todayScaleFilterIsOn")
     @Published var tableModels = [TableModel]()
     
-    private let getScaleTodayIdUseCase: GetScaleTodayIdUseCaseProtocol
-    private let getAllCollaboratorsUseCase: GetAllCollaboratorsUseCaseProtocol
+    // MARK: - PRIVATE PROPERTIES
     
-    init(getScaleTodayIdUseCase: GetScaleTodayIdUseCaseProtocol,
-         getAllCollaboratorsUseCase: GetAllCollaboratorsUseCaseProtocol) {
+    private let getScaleTodayIdUseCase: GetScaleTodayIdUseCaseProtocol
+    
+    // MARK: - INITIALIZETER
+    
+    init(collaboratorsModel: CollaboratorsModel,
+         getScaleTodayIdUseCase: GetScaleTodayIdUseCaseProtocol) {
+        self.collaboratorsModel = collaboratorsModel
         self.getScaleTodayIdUseCase = getScaleTodayIdUseCase
-        self.getAllCollaboratorsUseCase = getAllCollaboratorsUseCase
         
-        updateCollaborator()
+        updateSelectedCollaborator()
+        updateTableModels()
     }
     
-    func updateCollaborator() {
-        collaborators = getAllCollaboratorsUseCase.execute()
-        collaborator = collaborators.first ?? .init()
-        
+    // MARK: - PRIVATE METHODS
+    
+    private func updateSelectedCollaborator() {
+        collaborator = collaboratorsModel.collaborators.first ?? .init()
+    }
+    
+    private func updateTableModels() {
         tableModels = getTableModel()
     }
+    
+    private func getWorkplace(_ scale: Scale, to day: Weekday) -> WorkplaceType {
+        switch day {
+        case .monday: scale.monday
+        case .tuesday: scale.tuesday
+        case .wednesday: scale.wednesday
+        case .thursday: scale.thursday
+        case .friday: scale.friday
+        }
+    }
+    
+    // MARK: - PUBLIC METHODS
     
     func getScaleTodayId() -> Int {
         return getScaleTodayIdUseCase.execute()
@@ -83,7 +106,7 @@ class TodayScaleViewModel: TodayScaleViewModelProtocol {
         }
         
         var models = [TableModel]()
-        for collaborator in collaborators {
+        for collaborator in collaboratorsModel.collaborators {
             models.append(
                 .init(title: collaborator.name,
                       leftDescription: "Dia da semana",
@@ -94,13 +117,13 @@ class TodayScaleViewModel: TodayScaleViewModelProtocol {
         return models
     }
     
-    private func getWorkplace(_ scale: Scale, to day: Weekday) -> WorkplaceType {
-        switch day {
-        case .monday: scale.monday
-        case .tuesday: scale.tuesday
-        case .wednesday: scale.wednesday
-        case .thursday: scale.thursday
-        case .friday: scale.friday
-        }
+    func viewAppear() {
+        updateSelectedCollaborator()
+        updateTableModels()
+    }
+    
+    func filterIsOnWasUpdated() {
+        UserDefaults.standard.set(filterIsOn, forKey: "todayScaleFilterIsOn")
+        updateTableModels()
     }
 }

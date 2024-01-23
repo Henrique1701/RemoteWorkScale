@@ -27,6 +27,7 @@
 		BE1218282B5562250022EAEE /* GetScaleTodayIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1218272B5562250022EAEE /* GetScaleTodayIdUseCase.swift */; };
 		BE3E898C2B2BD9510044B7EC /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3E898B2B2BD9510044B7EC /* TableView.swift */; };
 		BE58EFC52B5847EC00BC6DA8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE58EFC42B5847EC00BC6DA8 /* HeaderView.swift */; };
+		BE58EFC72B5F465C00BC6DA8 /* CollaboratorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE58EFC62B5F465C00BC6DA8 /* CollaboratorsModel.swift */; };
 		BE8E5C692B5431B600A05017 /* EditCollaboratorUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8E5C682B5431B600A05017 /* EditCollaboratorUseCaseProtocol.swift */; };
 		BE8E5C6B2B5431DD00A05017 /* EditCollaboratorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8E5C6A2B5431DD00A05017 /* EditCollaboratorUseCase.swift */; };
 		BE8E5C6E2B54322B00A05017 /* EditScaleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8E5C6D2B54322B00A05017 /* EditScaleViewModel.swift */; };
@@ -98,6 +99,7 @@
 		BE1218272B5562250022EAEE /* GetScaleTodayIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScaleTodayIdUseCase.swift; sourceTree = "<group>"; };
 		BE3E898B2B2BD9510044B7EC /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		BE58EFC42B5847EC00BC6DA8 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		BE58EFC62B5F465C00BC6DA8 /* CollaboratorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsModel.swift; sourceTree = "<group>"; };
 		BE8E5C682B5431B600A05017 /* EditCollaboratorUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollaboratorUseCaseProtocol.swift; sourceTree = "<group>"; };
 		BE8E5C6A2B5431DD00A05017 /* EditCollaboratorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollaboratorUseCase.swift; sourceTree = "<group>"; };
 		BE8E5C6D2B54322B00A05017 /* EditScaleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScaleViewModel.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 		BEDCCA4E2B2005BA00592AEF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BE58EFC62B5F465C00BC6DA8 /* CollaboratorsModel.swift */,
 				BEDCCA4F2B2005D800592AEF /* WorkplaceType.swift */,
 				BEDCCA512B20060500592AEF /* Scale.swift */,
 				BEDCCA532B2006D000592AEF /* Collaborator.swift */,
@@ -561,6 +564,7 @@
 				BEDCCA662B23A98E00592AEF /* HeaderRow.swift in Sources */,
 				BE1218152B548B7A0022EAEE /* EditScaleRow.swift in Sources */,
 				BE0E14392B45AD9500A1A5B9 /* ConfigurationsView.swift in Sources */,
+				BE58EFC72B5F465C00BC6DA8 /* CollaboratorsModel.swift in Sources */,
 				BEBACC182B2B1F4C00672109 /* ServiceLocal.swift in Sources */,
 				BE9C66D52B13A51D00DD9B78 /* ContentView.swift in Sources */,
 				BE0E142D2B44DE8900A1A5B9 /* AnnualScaleUseCase.swift in Sources */,

@@ -8,25 +8,22 @@
 import Combine
 
 class EditCollaboratorNameViewModel: ObservableObject {
+    @Published var collaboratorsModel: CollaboratorsModel
     @Published var showAlert = false
     @Published var selectedCollaboratorName = ""
     @Published var newName = ""
     
-    private let editCollaboratorNameUseCase: EditCollaboratorNameUseCaseProtocol
-    private let getAllCollaboratorsUseCase: GetAllCollaboratorsUseCase
     private var alertMessage = ""
     private var collaboratorNames: [String] {
-        getAllCollaboratorsUseCase.execute().map { $0.name }
+        collaboratorsModel.collaborators.map { $0.name }
     }
     
-    init(editCollaboratorNameUseCase: EditCollaboratorNameUseCaseProtocol,
-         getAllCollaboratorsUseCase: GetAllCollaboratorsUseCase) {
-        self.editCollaboratorNameUseCase = editCollaboratorNameUseCase
-        self.getAllCollaboratorsUseCase = getAllCollaboratorsUseCase
-        setupProperties()
+    init(collaboratorsModel: CollaboratorsModel) {
+        self.collaboratorsModel = collaboratorsModel
+        setProperties()
     }
     
-    private func setupProperties() {
+    private func setProperties() {
         selectedCollaboratorName = getCollaboratorNames().first ?? ""
     }
     
@@ -44,7 +41,7 @@ class EditCollaboratorNameViewModel: ObservableObject {
     
     func editCollaboratorName() {
         do {
-            try editCollaboratorNameUseCase.execute(with: selectedCollaboratorName, and: newName)
+            try collaboratorsModel.editCollaboratorName(from: selectedCollaboratorName, to: newName)
             alertMessage = "Nome alterado com sucesso!"
             updateSelectedCollaboratorName()
         } catch(let error) {
@@ -55,7 +52,7 @@ class EditCollaboratorNameViewModel: ObservableObject {
     }
     
     func getCollaboratorNames() -> [String] {
-        return getAllCollaboratorsUseCase.execute().map { $0.name }
+        return collaboratorNames
     }
     
     func getAlertMessage() -> String {

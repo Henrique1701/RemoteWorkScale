@@ -8,29 +8,37 @@
 import SwiftUI
 
 struct RegisterCollaboratorView: View {
+    @ObservedObject var viewModel: RegisterCollaboratorViewModel
     
-    @State private var collaboratorName = ""
-    
-    @ObservedObject var viewModel = RegisterCollaboratorViewModel(registerCollaboratorUseCase: RegisterCollaboratorUseCase(service: ServiceLocal()))
+    init(viewModel: RegisterCollaboratorViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
             Text("Adicionar novo colaborador")
             TextField("Nome do colaborador",
-                      text: $collaboratorName)
+                      text: $viewModel.selectedCollaboratorName)
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
             Button("Adicionar") {
-                viewModel.registerNewCollaborator(with: collaboratorName)
+                viewModel.registerNewCollaborator()
             }
-            .alert(Text(viewModel.alertMessage),
+            .buttonStyle(.borderedProminent)
+            .padding()
+            .alert(viewModel.alertMessage,
                    isPresented: $viewModel.showAlert) {
                 Button("Fechar", role: .cancel) { }
             }
+            Text(viewModel.alertMessage)
+                .font(.callout)
+                .padding()
         }
     }
 }
 
 #Preview {
-    RegisterCollaboratorView()
+    RegisterCollaboratorView(
+        viewModel: RegisterCollaboratorViewModel(collaboratorsModel: CollaboratorsModel())
+    )
 }

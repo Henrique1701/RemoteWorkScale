@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct EditScaleView: View {
-    @StateObject private var viewModel = EditScaleViewModel(
-        editCollaboratorUseCase: EditCollaboratorUseCase(service: ServiceLocal()),
-        getAllCollaboratorUseCase: GetAllCollaboratorsUseCase(service: ServiceLocal())
-    )
+    @ObservedObject private var viewModel: EditScaleViewModel
+    
+    init(viewModel: EditScaleViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
@@ -73,5 +74,5 @@ struct EditScaleView: View {
 }
 
 #Preview {
-    EditScaleView()
+    EditScaleView(viewModel: EditScaleViewModel(collaboratorsModel: CollaboratorsModel()))
 }

@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct RemoveCollaboratorView: View {
-    @State private var collaborator = ""
+    @ObservedObject var viewModel: RemoveCollaboratorViewModel
     @State private var showRemoveConfirmationAlert = false
     
-    @StateObject private var viewModel = RemoveCollaboratorViewModel(
-        getAllCollaboratorsUseCase: GetAllCollaboratorsUseCase(service: ServiceLocal()),
-        removeCollaboratorUseCase: RemoveCollaboratorUseCase(service: ServiceLocal())
-    )
+    init(viewModel: RemoveCollaboratorViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
@@ -49,5 +48,7 @@ struct RemoveCollaboratorView: View {
 }
 
 #Preview {
-    RemoveCollaboratorView()
+    RemoveCollaboratorView(
+        viewModel: RemoveCollaboratorViewModel(collaboratorsModel: CollaboratorsModel())
+    )
 }

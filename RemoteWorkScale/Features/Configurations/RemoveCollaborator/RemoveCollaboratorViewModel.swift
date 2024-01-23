@@ -11,28 +11,27 @@ class RemoveCollaboratorViewModel: ObservableObject {
     
     // MARK: - PUBLIC PROPERTIES
     
+    @Published var collaboratorsModel: CollaboratorsModel
+    
     @Published var collaborators = [String]()
     @Published var selectedCollaborator = ""
     @Published var showAlert = false
     
     // MARK: - PRIVATE PROPERTIES
     
-    private let getAllCollaboratorsUseCase: GetAllCollaboratorsUseCaseProtocol
-    private let removeCollaboratorUseCase: RemoveCollaboratorUseCaseProtocol
     private var alertMessage = ""
     
     // MARK: - INITIALIZER
     
-    init(getAllCollaboratorsUseCase: GetAllCollaboratorsUseCaseProtocol, removeCollaboratorUseCase: RemoveCollaboratorUseCaseProtocol) {
-        self.getAllCollaboratorsUseCase = getAllCollaboratorsUseCase
-        self.removeCollaboratorUseCase = removeCollaboratorUseCase
+    init(collaboratorsModel: CollaboratorsModel) {
+        self.collaboratorsModel = collaboratorsModel
         setCollaboratorsAndFirstSelectedCollaborator()
     }
     
     // MARK: - PRIVATE METHODS
     
     private func setCollaboratorsAndFirstSelectedCollaborator() {
-        collaborators = getAllCollaboratorsUseCase.execute().map { $0.name }
+        collaborators = collaboratorsModel.collaborators.map { $0.name }
         selectedCollaborator = collaborators.first ?? ""
     }
     
@@ -40,7 +39,7 @@ class RemoveCollaboratorViewModel: ObservableObject {
     
     func removeSelectedCollaborator() {
         do {
-            try removeCollaboratorUseCase.execute(with: selectedCollaborator)
+            try collaboratorsModel.removeCollaborator(with: selectedCollaborator)
             alertMessage = "\(selectedCollaborator) removido com sucesso!"
             setCollaboratorsAndFirstSelectedCollaborator()
         } catch {
